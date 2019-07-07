@@ -1,7 +1,8 @@
 
 import sys
 import os
-from powerboil.preprocessed_files import HTML_STRING
+import json
+from preprocessed_files import HTML_STRING
 import subprocess
 class colors: 
     reset='\033[0m'
@@ -256,13 +257,15 @@ def create_html(project_name=None, dir_to_create=None):
 def main():
     if len(sys.argv) == 1:
         FRAMEWORKS=['Django','Vue','Flutter','React' ,'HTML']
-        print(colors.blue, '====================================================== BOILER=================================== \n Boiler Plate codes for the following frameworks')
-        print(colors.reset)    
+        print(colors.blue, '============PowerBoil ========== \n Boiler Plate codes for the following frameworks')
+        print(colors.reset)
         for index, frameworks in enumerate(FRAMEWORKS):
             print(f"{index} ) {frameworks}")
+
      
         choice = int(input("Enter your Choice"))
         print(colors.reset)
+
         if (choice == 0):
             create_django()
         elif(choice == 1):
