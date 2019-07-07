@@ -2,7 +2,7 @@
 import sys
 import os
 import json
-from preprocessed_files import HTML_STRING,readme
+from powerboil.preprocessed_files import HTML_STRING,readme
 import subprocess
 class colors: 
     reset='\033[0m'

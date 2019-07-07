@@ -23,4 +23,70 @@ HTML_STRING= """<!DOCTYPE html>
 </html>"""
 
 readme = """ ## {} \n  {} A {} project  """
+extension_html="""     
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{}</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <style>
+  
+      html,
+      body {
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        margin: 0;
+        min-height: 180px;
+        padding: 0;
+        width: 384px;
+      }
+      h1 {
+        font-family: "Roboto", monospace;
+        font-size: 22px;
+        font-weight: 400;
+        margin: 0;
+        color:royalblue;
+      }
+     
+      .modal-content {
+        padding: 0 22px;
+        text-align: center;
+        font-size: 30px;
+      }
+   
+      .logo {
+        padding: 16px;
+      }
+    
+      
+     
+     
+    </style>
+    <script src="popup.js"></script>
+  </head>
+
+  <body>
+    <div class="modal-header">
+      <h1 class="logo" style="text-align: center;">
+          {}
+      </h1>
+    </div>
+    <div class="modal-content">
+      <h1>Sample Extension App </h1>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
+
+"""  
 
