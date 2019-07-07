@@ -2,7 +2,7 @@
 import sys
 import os
 import json
-from preprocessed_files import HTML_STRING
+from preprocessed_files import HTML_STRING,readme
 import subprocess
 class colors: 
     reset='\033[0m'
@@ -86,6 +86,9 @@ def create_django(project_name=None, dir_to_create=None,app_name=None):
             p = subprocess.Popen(['django-admin startproject '+project_name ], stdout=DEVNULL, stderr=subprocess.STDOUT,shell=True)
             output=p.communicate()
             os.chdir(project_name)
+            with open("README.md", 'a') as f:
+                f.write(readme.format(project_name, project_name, "Django"))
+                
             pr = subprocess.Popen(['django-admin startapp '+ app_name], stdout=DEVNULL, stderr=subprocess.STDOUT,shell=True)
             out = pr.communicate()[0]
             if pr.returncode == 0:
@@ -240,6 +243,8 @@ def create_html(project_name=None, dir_to_create=None):
             try:
                 os.makedirs(project_name)
                 os.chdir(project_name)
+                with open("README.md", 'a') as f:
+                    f.write(readme.format(project_name, project_name, "HTML"))
 
                 with open('index.html', 'w') as file:
                     file.write(HTML_STRING.format(project_name.title(),project_name.title()))
@@ -252,11 +257,13 @@ def create_html(project_name=None, dir_to_create=None):
                 break
         
 
+    
+
 
 
 def main():
     if len(sys.argv) == 1:
-        FRAMEWORKS=['Django','Vue','Flutter','React' ,'HTML']
+        FRAMEWORKS=['Django','Vue','Flutter','React' ,'HTML','Chrome Extension']
         print(colors.blue, '============PowerBoil ========== \n Boiler Plate codes for the following frameworks')
         print(colors.reset)
         for index, frameworks in enumerate(FRAMEWORKS):

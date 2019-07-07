@@ -22,5 +22,5 @@ HTML_STRING= """<!DOCTYPE html>
 </body>
 </html>"""
 
-
+readme = """ ## {} \n  {} A {} project  """
 
