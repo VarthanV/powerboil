@@ -1,8 +1,9 @@
 import sys
 import os
 import json
-from preprocessed_files  import HTML_STRING,readme,extension_html,popupfile
+from preprocessed_files  import HTML_STRING,readme,extension_html,popupfile,linearRegression,basic_plot
 import subprocess
+# Colors class
 class colors: 
     reset='\033[0m'
     bold='\033[01m'
@@ -25,7 +26,8 @@ class colors:
     yellow='\033[93m'
     lightblue='\033[94m'
     pink='\033[95m'
-    lightcyan='\033[96m'    
+    lightcyan = '\033[96m'
+#Directory Selection         
 def select_dir():
     while(True):
  
@@ -37,7 +39,7 @@ def select_dir():
             print(colors.reset)
         choice = input()
         if (choice == '*'):
-            directory_name = input(colors.yellow, "Enter the name of the Directory You want to create")
+            directory_name = input( "Enter the name of the Directory You want to create")
             print(colors.reset)
             os.mkdir(directory_name)
             return directory_name
@@ -52,7 +54,7 @@ def select_dir():
             print(colors.red, "Enter a valid Choice \n")
             print(colors.reset)
             continue
-             
+# BoilerPlate Code for Django             
 def create_django(project_name=None, dir_to_create=None,app_name=None):
     if(dir_to_create == None):
         dir_to_create = select_dir()
@@ -115,8 +117,7 @@ def create_django(project_name=None, dir_to_create=None,app_name=None):
 
                             sys.exit()
                   
-              
-                    
+#Boiler Plate Code for Flutter                                  
 def create_flutter(project_name=None, dir_to_create=None):
     if dir_to_create == None:
         dir_to_create = select_dir()
@@ -146,6 +147,7 @@ def create_flutter(project_name=None, dir_to_create=None):
                print(colors.red, colors.bold, "Error ! Couldn't find Flutter in your system please follow this and install and continue   \n https://flutter.dev/docs/get-started/install")
                print(colors.reset)    
                sys.exit()
+# BoilerPlate Code for React               
 def create_react(project_name=None, dir_to_create=None):
     if dir_to_create == None:
         dir_to_create = select_dir()
@@ -176,7 +178,7 @@ def create_react(project_name=None, dir_to_create=None):
                print("It seems that 'Node' is not installed in your System Please follow the below link to install \n https://nodejs.org/en/download/ ")
                print(colors.reset)
                sys.exit()
-
+#Boiler Plate Code for Vue
 def create_vue(project_name=None, dir_to_create=None):
     if dir_to_create == None:
         dir_to_create = select_dir()
@@ -221,7 +223,7 @@ def create_vue(project_name=None, dir_to_create=None):
                             print("Couldn't install Vue  please Try again,Install it manually or make sure npm is installed ,Follow the docs to install npm \n https://nodejs.org/en/download/ ")
                             print(colors.reset)
                             sys.exit()
-            
+#BoilerPlate Code for HTML            
 def create_html(project_name=None, dir_to_create=None):
     if dir_to_create == None:
         dir_to_create = select_dir()
@@ -253,7 +255,7 @@ def create_html(project_name=None, dir_to_create=None):
                 print(colors.bold, colors.red, project_name + " already exists please mention a different name ")
                 print(colors.reset)
                 break
-        
+#BoilerPlate Code for Chrome Extension        
 def create_extension(project_name=None, dir_to_create=None):
     if dir_to_create == None:
         dir_to_create = select_dir()
@@ -276,10 +278,10 @@ def create_extension(project_name=None, dir_to_create=None):
                 with open("README.md", 'a') as f:
                     f.write(readme.format(project_name, project_name, "Chrome Extension"))
 
-                with open('index.html', 'w') as file:
-                    file.write(extension_html.format(project_name.title()))
-                with open('popup.js') as file:
-                    file.write(popupfile)
+                with open('index.html', 'w') as f:
+                    f.write(extension_html.format(project_name.title()))
+                with open('popup.js') as f:
+                    f.write(popupfile)
                        
                 print(colors.bold, colors.yellow, "Project Created Sucessfully")
                 print(colors.reset)
@@ -287,8 +289,50 @@ def create_extension(project_name=None, dir_to_create=None):
             except FileExistsError as e:
                 print(colors.bold, colors.red, project_name + " already exists please mention a different name ")
                 print(colors.reset)
+ 
                 break
+#Boiler Plate Code for ML                
+def create_ml(project_name=None, dir_to_create=None):
+    DEVNULL = open(os.devnull, 'wb')
+    if dir_to_create == None:
+        dir_to_create = select_dir()
+        os.chdir(select_dir)
+        print(colors.yellow, "Is the PC setup with all dependencies [Yes/No] ? \n")
+        choice = input()
+        if choice.lower() == 'Yes' or choice.lower() == 'y':
+            print(colors.reset, colors.red, "The following packages will be installed 1) Sci- Kit Learn \n 2) Numpy  \n 3) Matplotlib \n 4)Pandas \n [Yes/No]")
+            option = input()
+            if option.lower == 'yes' or option.lower() == 'y':
+               project_dir= os.mkdir("BoilerML")
+               os.chdir(project_dir)
+               print(colors.lightgreen, "Installing Numpy ... ")
+               print(colors.reset)
+               p = subprocess.Popen(['pip3 install numpy'], stdout=DEVNULL, stderr=subprocess.STDOUT, shell=True)
+               output = p.communicate()[0]
+               if p.returncode == 0:
+                   print("Installed Numpy")
+               else:
+                   print("Unexpected Error occured ,Please try again later")
+                   sys.exit()
 
+               p = subprocess.Popen(['pip3 install matplotlib'], stdout=DEVNULL, stderr=subprocess.STDOUT, shell=True)
+               output = p.communicate()[0]
+               if p.returncode == 0:
+                   print("Installed Matplotlib")
+               else:
+                   print("Unexpected Error occure")
+                   sys.exit()
+                   p = subprocess.Popen(['pip3 install sklearn'], stdout=DEVNULL, stderr=subprocess.STDOUT, shell=True)
+                   output = p.communicate()[0]
+                   if p.returncode == 0:
+                       print("Installed sucessfully al the Pakcages")
+                       print(colors.yellow, "Powerboiling Please wait ....")
+                       with open("README.md ", 'a') as f:
+                            f.write(readme.format(project_name, project_name, "ML Project"))
+                       with open("basic_model.py", 'a') as f:
+                             f.write(linearRegression)
+                       with open("basic_plot.py") as f:
+                            f.write(basic_plot)
 def main():
     if len(sys.argv) == 1:
         FRAMEWORKS=['Django','Vue','Flutter','React' ,'HTML','Chrome Extension']

@@ -96,4 +96,25 @@ function disp() {
 
 window.addEventListener('load', disp());
 """
+linearRegression ="""
+import numpy as np
+from sklearn.linearmodel import LinearRegression
+X=np.array([[1,1],[1,2],[2,3]])
+Y = np.dot(X, np.array([1, 2])) + 3
+linear=LinearRegression()
+model=linear.fit(X,Y)
+print(model.score(X,Y))
+"""
+basic_plot = """
+import matplotlib.pyplot as plt
+import numpy as np
+X=np.arange(10)
+Y= np.square(np.arange(10))
+plt.plot(X,Y)
+plt.title(" Number vs Square")
+plt.xlabel(" Number")
+plt.ylabel("Square of the Number (X * x)")
+plt.show()
+plt.savefig('sample.png')
+ """
 
