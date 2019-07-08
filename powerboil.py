@@ -3,6 +3,7 @@ import os
 import json
 from preprocessed_files  import HTML_STRING,readme,extension_html,popupfile,linearRegression,basic_plot
 import subprocess
+import gitignore
 # Colors class
 class colors: 
     reset='\033[0m'
@@ -88,7 +89,9 @@ def create_django(project_name=None, dir_to_create=None,app_name=None):
             os.chdir(project_name)
             with open("README.md", 'a') as f:
                 f.write(readme.format(project_name, project_name, "Django"))
-                
+            with open('.gitignore', 'a') as f:
+                f.write(gitignore.DJANGO_GIT_IGNORE)
+                  
             pr = subprocess.Popen(['django-admin startapp '+ app_name], stdout=DEVNULL, stderr=subprocess.STDOUT,shell=True)
             out = pr.communicate()[0]
             if pr.returncode == 0:
