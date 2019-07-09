@@ -55,6 +55,7 @@ def select_dir():
             print(colors.red, "Enter a valid Choice \n")
             print(colors.reset)
             continue
+            
 # BoilerPlate Code for Django             
 def create_django(project_name=None, dir_to_create=None,app_name=None):
     if(dir_to_create == None):
@@ -65,17 +66,19 @@ def create_django(project_name=None, dir_to_create=None,app_name=None):
             print(colors.yellow, " 1) Enter the Project Name \n")
             print(colors.reset)
             project_name = input()
-        if (project_name.isspace()):
-            print(colors.yellow, "Enter a valid Project Name to continue")
-            print(colors.reset)
-            continue
+            project_name.replace(' ', '_')
+            if (project_name = ''):
+                print(colors.red,"Please Enter a valid Project Name to continue")
+                print(colors.reset)
+                continue
 
         project_name = project_name.strip().lower()
         if(app_name ==None):
             print(colors.yellow,"2) Enter the App Name")
             app_name=input()
-            if (app_name.isspace()):
-                print(colors.red, "Enter a valid App Name")
+            app_name.replace(' ', '_')
+            if (app_name = ''):
+                print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
             
@@ -160,12 +163,13 @@ def create_react(project_name=None, dir_to_create=None):
             print(colors.yellow, "Enter Project Name")
             print(colors.reset)
             project_name = input()
-            if project_name.isspace():
-                print( colors.red,"Please Enter a valid Project Name to continue")
+            project_name.replace(' ', '_')
+            if (project_name = ''):
+                print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
         try:
-                print(colors.bold, colors.blue, "Please Wait Creating Your Awesome React  Project !! ")
+                print(colors.bold, colors.blue, "Please Wait. We're creating your Awesome React Project!! ")
                 print(colors.reset)
                 DEVNULL = open(os.devnull, 'wb')
                
@@ -181,6 +185,7 @@ def create_react(project_name=None, dir_to_create=None):
                print("It seems that 'Node' is not installed in your System Please follow the below link to install \n https://nodejs.org/en/download/ ")
                print(colors.reset)
                sys.exit()
+            
 #Boiler Plate Code for Vue
 def create_vue(project_name=None, dir_to_create=None):
     if dir_to_create == None:
@@ -191,8 +196,9 @@ def create_vue(project_name=None, dir_to_create=None):
             print(colors.yellow, "Enter Project Name")
             print(colors.reset)
             project_name = input()
-            if project_name.isspace():
-                print( colors.red,"Please Enter a valid Project Name to continue")
+            project_name.replace(' ', '_')
+            if (project_name = ''):
+                print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
         try:
@@ -223,7 +229,7 @@ def create_vue(project_name=None, dir_to_create=None):
                        if p.returncode == 0:
                            continue
                        else:
-                            print("Couldn't install Vue  please Try again,Install it manually or make sure npm is installed ,Follow the docs to install npm \n https://nodejs.org/en/download/ ")
+                            print("Couldn't install Vue please try again, Install it manually or make sure npm is installed, Follow the docs to install npm \n https://nodejs.org/en/download/ ")
                             print(colors.reset)
                             sys.exit()
 #BoilerPlate Code for HTML            
@@ -236,8 +242,9 @@ def create_html(project_name=None, dir_to_create=None):
             print(colors.yellow, "Enter Project Name")
             print(colors.reset)
             project_name = input()
-            if project_name.isspace():
-                print( colors.red,"Please Enter a valid Project Name to continue")
+            project_name.replace(' ', '_')
+            if (project_name = ''):
+                print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
         else:
@@ -258,6 +265,7 @@ def create_html(project_name=None, dir_to_create=None):
                 print(colors.bold, colors.red, project_name + " already exists please mention a different name ")
                 print(colors.reset)
                 break
+                
 #BoilerPlate Code for Chrome Extension        
 def create_extension(project_name=None, dir_to_create=None):
     if dir_to_create == None:
@@ -268,8 +276,9 @@ def create_extension(project_name=None, dir_to_create=None):
             print(colors.yellow, "Enter Project Name")
             print(colors.reset)
             project_name = input()
-            if project_name.isspace():
-                print( colors.red,"Please Enter a valid Project Name to continue")
+            project_name.replace(' ', '_')
+            if (project_name = ''):
+                print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
         else:
@@ -302,7 +311,7 @@ def create_ml(project_name=None, dir_to_create=None):
         os.chdir(select_dir)
         print(colors.yellow, "Is the PC setup with all dependencies [Yes/No] ? \n")
         choice = input()
-        if choice.lower() == 'Yes' or choice.lower() == 'y':
+        if choice.lower() == 'yes' or choice.lower() == 'y':
             print(colors.reset, colors.red, "The following packages will be installed 1) Sci- Kit Learn \n 2) Numpy  \n 3) Matplotlib \n 4)Pandas \n [Yes/No]")
             option = input()
             if option.lower == 'yes' or option.lower() == 'y':
@@ -315,7 +324,7 @@ def create_ml(project_name=None, dir_to_create=None):
                if p.returncode == 0:
                    print("Installed Numpy")
                else:
-                   print("Unexpected Error occured ,Please try again later")
+                   print("Unexpected Error occured, Please try again later")
                    sys.exit()
 
                p = subprocess.Popen(['pip3 install matplotlib'], stdout=DEVNULL, stderr=subprocess.STDOUT, shell=True)
