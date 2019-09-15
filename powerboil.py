@@ -67,7 +67,7 @@ def create_django(project_name=None, dir_to_create=None,app_name=None):
             print(colors.reset)
             project_name = input()
             project_name.replace(' ', '_')
-            if (project_name = ''):
+            if (project_name == ''):
                 print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
@@ -77,7 +77,7 @@ def create_django(project_name=None, dir_to_create=None,app_name=None):
             print(colors.yellow,"2) Enter the App Name")
             app_name=input()
             app_name.replace(' ', '_')
-            if (app_name = ''):
+            if (app_name == ''):
                 print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
@@ -164,7 +164,7 @@ def create_react(project_name=None, dir_to_create=None):
             print(colors.reset)
             project_name = input()
             project_name.replace(' ', '_')
-            if (project_name = ''):
+            if (project_name == ''):
                 print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
@@ -197,7 +197,7 @@ def create_vue(project_name=None, dir_to_create=None):
             print(colors.reset)
             project_name = input()
             project_name.replace(' ', '_')
-            if (project_name = ''):
+            if (project_name == ''):
                 print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
@@ -243,7 +243,7 @@ def create_html(project_name=None, dir_to_create=None):
             print(colors.reset)
             project_name = input()
             project_name.replace(' ', '_')
-            if (project_name = ''):
+            if (project_name == ''):
                 print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
@@ -277,7 +277,7 @@ def create_extension(project_name=None, dir_to_create=None):
             print(colors.reset)
             project_name = input()
             project_name.replace(' ', '_')
-            if (project_name = ''):
+            if (project_name == ''):
                 print(colors.red,"Please Enter a valid Project Name to continue")
                 print(colors.reset)
                 continue
